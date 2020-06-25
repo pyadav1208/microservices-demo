@@ -22,10 +22,8 @@ import (
 	"io/ioutil"
 	"net"
 	"os"
-	"os/signal"
 	"strings"
 	"sync"
-	"syscall"
 	"time"
 
 	pb "github.com/GoogleCloudPlatform/microservices-demo/src/productcatalogservice/genproto"
@@ -87,7 +85,15 @@ func main() {
 		go initProfiling("productcatalogservice", "1.0.0")
 	} else {
 		log.Info("Profiling disabled.")
-	}
+    }
+    
+    if os.Getenv("ENABLE_RELOAD") != "" {
+		reloadCatalog = true
+		log.Infof("Enable catalog reloading")
+	} else {
+		reloadCatalog = false
+		log.Infof("Disable catalog reloading")
+    }
 
 	flag.Parse()
 
@@ -102,22 +108,6 @@ func main() {
 	} else {
 		extraLatency = time.Duration(0)
 	}
-
-	sigs := make(chan os.Signal, 1)
-	signal.Notify(sigs, syscall.SIGUSR1, syscall.SIGUSR2)
-	go func() {
-		for {
-			sig := <-sigs
-			log.Printf("Received signal: %s", sig)
-			if sig == syscall.SIGUSR1 {
-				reloadCatalog = true
-				log.Infof("Enable catalog reloading")
-			} else {
-				reloadCatalog = false
-				log.Infof("Disable catalog reloading")
-			}
-		}
-	}()
 
 	if os.Getenv("PORT") != "" {
 		port = os.Getenv("PORT")
