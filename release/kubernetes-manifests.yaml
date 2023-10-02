@@ -32,7 +32,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: gcr.io/gke-qwiklab-debugging/emailservice:v0.1.0
+        image: gcr.io/shenxiang-gcp-solution/emailservice:v0.1.0
         ports:
         - containerPort: 8080
         env:
@@ -86,7 +86,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: gcr.io/gke-qwiklab-debugging/checkoutservice:v0.1.0
+          image: gcr.io/shenxiang-gcp-solution/checkoutservice:v0.1.0
           ports:
           - containerPort: 5050
           readinessProbe:
@@ -155,7 +155,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: gcr.io/gke-qwiklab-debugging/recommendationservice:v0.1.0
+        image: gcr.io/shenxiang-gcp-solution/recommendationservice:v0.1.0
         ports:
         - containerPort: 8080
         readinessProbe:
@@ -215,7 +215,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: gcr.io/gke-qwiklab-debugging/frontend:v0.1.0
+          image: gcr.io/shenxiang-gcp-solution/frontend:v0.1.0
           ports:
           - containerPort: 8080
           readinessProbe:
@@ -309,7 +309,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: gcr.io/gke-qwiklab-debugging/paymentservice:v0.1.0
+        image: gcr.io/shenxiang-gcp-solution/paymentservice:v0.1.0
         ports:
         - containerPort: 50051
         env:
@@ -358,7 +358,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: gcr.io/gke-qwiklab-debugging/productcatalogservice:v0.1.0
+        image: gcr.io/shenxiang-gcp-solution/productcatalogservice:v0.1.0
         ports:
         - containerPort: 3550
         env:
@@ -417,7 +417,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: gcr.io/gke-qwiklab-debugging/cartservice:v0.1.0
+        image: gcr.io/shenxiang-gcp-solution/cartservice:v0.1.0
         ports:
         - containerPort: 7070
         env:
@@ -477,7 +477,7 @@ spec:
       restartPolicy: Always
       containers:
       - name: main
-        image: gcr.io/gke-qwiklab-debugging/loadgenerator:v0.1.0
+        image: gcr.io/shenxiang-gcp-solution/loadgenerator:v0.1.0
         env:
         - name: FRONTEND_ADDR
           value: "frontend:80"
@@ -520,7 +520,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: gcr.io/gke-qwiklab-debugging/currencyservice:v0.1.0
+        image: gcr.io/shenxiang-gcp-solution/currencyservice:v0.1.0
         ports:
         - name: grpc
           containerPort: 7000
@@ -575,7 +575,7 @@ spec:
     spec:
       containers:
       - name: server
-        image: gcr.io/gke-qwiklab-debugging/shippingservice:v0.1.0
+        image: gcr.io/shenxiang-gcp-solution/shippingservice:v0.1.0
         ports:
         - containerPort: 50051
         env:
@@ -686,7 +686,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: gcr.io/gke-qwiklab-debugging/adservice:v0.1.0
+        image: gcr.io/shenxiang-gcp-solution/adservice:v0.1.0
         ports:
         - containerPort: 9555
         env:
